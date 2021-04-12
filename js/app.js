@@ -1,8 +1,7 @@
 import * as THREE from 'three';
 import Stats from 'stats.js';
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-
-console.log( OrbitControls )
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import MyPanel from "/js/myPanel.js";
 
 export default class Environment {
 
@@ -10,6 +9,7 @@ export default class Environment {
 
     this.textures = textures;
     this.mobile = mobile;
+    this.targets = [];
     
     this.stats = new Stats();
     document.body.appendChild( this.stats.dom );
@@ -19,10 +19,18 @@ export default class Environment {
     this.scene.background = new THREE.Color( 0xFFFFFF)
     this.createCamera();
     this.controls = new OrbitControls( this.camera, this.container );
+
     this.createRenderer();
 
-    this.setup()
+    this.setup();
     this.bindEvents();
+    this.helpers();
+    this.thePanel();
+  }
+
+  thePanel(){
+
+    this.myPanel = new MyPanel( this.scene, this.renderer, this.camera, this.targets )
   }
 
   bindEvents(){
@@ -33,10 +41,14 @@ export default class Environment {
 
   setup(){ 
 
-    const geometry = new THREE.BoxGeometry( 100, 100, 100 );
+    const geometry = new THREE.BoxGeometry( 2, 2, 2 );
     const material = new THREE.MeshBasicMaterial( {map: this.textures[0]} );
     const cube = new THREE.Mesh( geometry, material );
     this.scene.add( cube );
+
+    this.targets.push( cube )
+
+    console.log( cube )
 
   }
 
@@ -49,11 +61,8 @@ export default class Environment {
 
   createCamera() {
 
-    const perspective = 800;
-    const fov = (180 * ( 2 * Math.atan( this.container.clientHeight / 2 / perspective))) / Math.PI;
-
     this.camera = new THREE.PerspectiveCamera( 65, this.container.clientWidth / this.container.clientHeight, 1, 10000 );
-    this.camera.position.set( 0,0, perspective );
+    this.camera.position.set( 0,0, 15 );
 
   }
 
@@ -73,14 +82,22 @@ export default class Environment {
 
   onWindowResize(){
 
-
-    // const fov = (180 * (2 * Math.atan(this.container.clientHeight / 2 / 800))) / Math.PI;
-    // this.camera.fov = fov;
-
     this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize( this.container.clientWidth, this.container.clientHeight );
 
+  }
+
+  helpers(){
+
+    const size = 20;
+    const divisions = 20;
+
+    const gridHelper = new THREE.GridHelper( size, divisions );
+    this.scene.add( gridHelper );
+
+    const axesHelper = new THREE.AxesHelper( 15 );
+    this.scene.add( axesHelper );
   }
 
 }
