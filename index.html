@@ -9,23 +9,59 @@
     <title>Experiments</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light ">
-    <div class="d-flex flex-grow-1">
-        <span class=" d-lg-none d-block"></span>
-        <a class="navbar-brand" href="index.html">
-            <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 278.8 278.8"><circle fill="#000205" cx="139.4" cy="139.4" r="139.4"/><g fill="none" stroke="#FFF" stroke-width="6.062" stroke-miterlimit="10"><path d="M214 183.4l-74.6 43.1-75.5-43.6V95.8l75.5-43.5 75.4 43.5v59.8l-11.3 6.5z"/><path d="M139.4 226.5l-18.8-38.2 18.8 10.8 75.4-43.5M63.9 95.8l75.3 43.6 75.6-43.6M139.2 139.4v59.7"/></g>
-            </svg>
-        </a>
+    <div class="container one">
+      <h1>theFile</h1>
+    <div id="myFlex">
+        <div>TIEMPO</div>
+        <div id="time">0</div>
+    </div>
+    <progress value="0" max="10" id="progressBar"></progress>
+
+    <form action="#">
+      <label for="cars">INTRODUCE EL CÓDIGO CORRECTO:</label>
+
+      <div id="myFlex">
+        <select id="num" name="num">
+          <option value="2">2</option>
+          <option value="8">8</option>
+          <option value="1">1</option>
+          <option value="3">3</option>
+        </select>
+        <select id="num" name="num">
+          <option value="5">5</option>
+          <option value="8">8</option>
+          <option value="1">1</option>
+          <option value="3">3</option>
+        </select>
+        <select id="num" name="num">
+          <option value="2">2</option>
+          <option value="8">8</option>
+          <option value="1">1</option>
+          <option value="3">3</option>
+        </select>
+        <select id="num" name="num">
+          <option value="2">B</option>
+          <option value="8">M</option>
+          <option value="1">A</option>
+          <option value="3">V</option>
+        </select>
+     </div>
+
+      <input id="button" type="submit">
+    </form>
+
+    <p><b>Observa el mural encima de la fuente y responde a las preguntas:</b></p>
+    <p>1.- Número de animales que aparecen</p>
+    <p>2.- Número de personas</p>
+    <p>3.- Número de de cuerdas que sujetan la vela más grande</p>
+    <p>4.- Letra inicial del color predominante</p>
 
     </div>
-    </nav>
 
-    <div id="magic"></div>
-    <div class="container pl-4 pr-4">
-        <div class="area text-center ">
-          <img src="/img/key.jpg" class="picture img-fluid" />
-        </div>
-    </div>
+
+    </body>
+    </html>
+
   
 
     <script src="./index.js"></script>

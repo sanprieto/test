@@ -12,25 +12,24 @@ const preload = () => {
       || navigator.userAgent.match(/BlackBerry/i) 
       || navigator.userAgent.match(/Windows Phone/i)) ? true : false;
 
-  let manager = new THREE.LoadingManager();
-  manager.onLoad = function() { 
 
-    const environment = new Environment( myTextures, mobile );
+  var timeleft = 30;
+  var downloadTimer = setInterval(function(){
+    if(timeleft <= 0){
+      clearInterval(downloadTimer);
+    }
+    document.getElementById("progressBar").value = 10 - timeleft;
+    var objetivo = document.getElementById('time');
+    objetivo.innerHTML = timeleft;
+    timeleft -= 1;
+  }, 1000);
 
-  }
+  document.querySelector('input').addEventListener('click', ()=>{ 
 
-  let imgHtml = document.querySelectorAll('.picture');
-  let myTextures = [];
+    alert('Número incorrecto')
 
-  imgHtml.forEach(( img )=>{
-
-    var loader = new THREE.TextureLoader( manager )
-    loader.load( img.src, function ( texture ) {
-        texture.encoding = THREE.sRGBEncoding;
-        myTextures.push( texture )
-        img.style.opacity = 0; //HTML imagen
-    }); 
   })
+
 }
 
 if ( document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)

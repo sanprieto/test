@@ -82,6 +82,8 @@ export default class Environment {
 
   onWindowResize(){
 
+    console.log( window.innerHeight, this.container.clientHeight )
+
     this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
     this.camera.updateProjectionMatrix();
     this.renderer.setSize( this.container.clientWidth, this.container.clientHeight );
