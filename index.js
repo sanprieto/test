@@ -1,6 +1,6 @@
-import '/css/Style.css';
-import Environment from '/js/app';
-import * as THREE from 'three';
+import '/css/style.css';
+// import Environment from '/js/app';
+// import * as THREE from 'three';
 
 const preload = () => {
 
@@ -13,7 +13,7 @@ const preload = () => {
       || navigator.userAgent.match(/Windows Phone/i)) ? true : false;
 
 
-  var timeleft = 30;
+  var timeleft = 60;
   var downloadTimer = setInterval(function(){
     if(timeleft <= 0){
       clearInterval(downloadTimer);

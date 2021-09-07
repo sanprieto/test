@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "gsap": "^3.6.1",
-    "parcel": "^2.0.0-rc.0",
+    "parcel-bundler": "^1.12.5",
     "stats.js": "^0.17.0",
     "three": "^0.127.0"
   }
