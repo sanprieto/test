@@ -33,3 +33,10 @@ input {
   width: 100%;
   background: aquamarine;
 }
+
+form {
+
+  background: #eaeaea;
+  margin-top: 30px;
+  padding: 13px;
+}
